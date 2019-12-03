@@ -2,7 +2,7 @@ package http;
 
 /**
  * <pre>
- *  描述:
+ *  描述:一个http响应结果通用类
  * </pre>
  *
  * @author KyleWong(wangfan)
@@ -39,25 +39,76 @@ public class HttpResult {
         this.data = data;
     }
 
+    /**
+     * 请求成功时的响应结果
+     * @return
+     */
     public static HttpResult success(){
         HttpResult httpResult = new HttpResult();
-        httpResult.setCode(200);
+        httpResult.setCode(httpResult.code);
         httpResult.setMsg("SUCCESS");
         return httpResult;
     }
 
+    /**
+     * 请求成功时的响应结果
+     * @param msg 自定义响应内容
+     * @return
+     */
+    public static HttpResult success(String msg){
+        HttpResult httpResult = new HttpResult();
+        httpResult.setMsg(msg);
+        httpResult.setCode(httpResult.code);
+        return httpResult;
+    }
+
+    /**
+     * 请求成功时的响应结果
+     * @param data 要响应的数据
+     * @return
+     */
     public static HttpResult success(Object data){
         HttpResult httpResult = new HttpResult();
-        httpResult.setCode(200);
+        httpResult.setCode(httpResult.code);
         httpResult.setMsg("SUCCESS");
         httpResult.setData(data);
         return httpResult;
     }
 
+    /**
+     * 请求成功时的响应结果
+     * @param msg 自定义响应的内容
+     * @param data 自定义响应数据
+     * @return
+     */
+    public static HttpResult success(String msg, Object data){
+        HttpResult httpResult = new HttpResult();
+        httpResult.setCode(httpResult.code);
+        httpResult.setMsg(msg);
+        httpResult.setData(data);
+        return httpResult;
+    }
+
+    /**
+     * 请求失败时的响应内容
+     * @return
+     */
     public static HttpResult failed(){
         HttpResult httpResult = new HttpResult();
         httpResult.setCode(500);
         httpResult.setMsg("soething is wrong");
+        return httpResult;
+    }
+
+    /**
+     * 请求失败时的相应内容
+     * @param msg 自定义相应内容
+     * @return
+     */
+    public static HttpResult failed(String msg){
+        HttpResult httpResult = new HttpResult();
+        httpResult.setCode(500);
+        httpResult.setMsg(msg);
         return httpResult;
     }
 
